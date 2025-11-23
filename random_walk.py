@@ -30,17 +30,20 @@ class Simulator:
                 valid_moves.append(potential_move)
         return valid_moves
 
-    def random_walk(self, target):
-        spaces = []
+    def random_walk(self, target = "j9", n = None):
+        spaces = [self.position]
         while True:
             random_move = choice(self.valid_moves())
             self.position = self.move(self.position, random_move)
             spaces.append(self.position)
             if self.position == (ord(target.lower()[0]) - 96, int(target[1])):
                 break
+            if n != None:
+                if len(spaces) == n+1:
+                    break
         return spaces
-
-
+    
+    
 if __name__ == "__main__":
     tmp = Simulator("knight", "B1")
     print(tmp.random_walk("B1"))
