@@ -21,5 +21,12 @@ def frequency_graph(spaces_visited: list[Space], filename: str = "Frequency Tabl
     plt.show()
     return frequency_table
 
+def recurrence_times(random_walks: list[list[Space]], filename: str = "Recurrence Times.png"):
+    lengths = [len(walk) - 1 for walk in random_walks]
+    plt.hist(lengths)
+    plt.show()
+    return lengths
+
 if __name__ == "__main__":
-    print(frequency_graph([(2,1),(3,3),(2,1)]))
+    # print(frequency_graph([(2,1),(3,3),(2,1)]))
+    print(recurrence_times([[(2,1),(3,3),(2,1)], [(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8)]]))
